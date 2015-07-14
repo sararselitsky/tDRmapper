@@ -83,6 +83,9 @@ From left to right, the columns are:
 (8) tdrMusPos: The location(s) where the mismatch or deletion occurred,
 (9) tRNAName: all of the tRNAs that read aligned to,
 
+*(b-f) Step 9 of the program outputs* 
+
+
 **(b)** *speciesInfo.txt, the main output with the quantification results and the tDR species assignment
 
 From left to right, the columns are:
@@ -100,14 +103,33 @@ From left to right, the columns are:
 (3) tRNAPer: quantification of that tDR species,
 (4) Catted: info for the y-axis of the coverage plots (tRNA proportion, tRNA, and the species),
 (5) Position: then nucleotide position within the tRNA,
-(6) GM: "error type" listed if there is an “error type" that is present in more than 5% of the reads and the majority "error type" at that position is listed,
-(7) perGM: the proportion of “error type” at that position (number of reads that have a mismatch or gap / number of total reads at each position),
-(8) base: the nucleotide at that position, unless that position part of the anti-codon
+(6) perCovg: the percent of coverage at that position, (number of reads at that position / number of reads mapping to that tRNA,
+(7) GM: "error type" listed if there is an “error type" that is present in more than 5% of the reads and the majority "error type" at that position is listed,
+(8) perGM: the proportion of “error type” at that position (number of reads that have a mismatch or gap / number of total reads at each position),
+(9) base: the nucleotide at that position, unless that position part of the anti-codon
 
+**(d)** *covgPre.txt: this output is designed for inputting into R and generating a pre-tRNA coverage plot
 
+From left to right, the columns are:
+(1) file: The .mapped file that was inputted into step 9,
+(2) tRNA: the parent tRNA name,
+(3) tRNAPer: quantification of that tDR species,
+(4) Catted: info for the y-axis of the coverage plots (tRNA proportion, tRNA, and the species),
+(5) Position: then nucleotide position within the tRNA,
+(6) perCovg: the percent of coverage at that position, (number of reads at that position / number of reads mapping to that tRNA,
+(7) base: location in the pre-tRNA, (A) -40 to -1 nts downstream of tRNA, (B) tRNA sequence, (C) +1 to +40 nts upstream of tRNA
 
+**(e)** *.top50covg.txt: same description as *covg.txt (c), but with only the top 50 most highly expressed tDRs derived from mature tRNAs.
 
-(b-f) Step 9 of the program outputs 
+**(f)** *.top50covgPre.txt: same description as *covg.txt (c), but with only the top 50 most highly expressed tDRs derived from pre-tRNAs.
+
+**(g)** *top50_tdr.pdf: Automatic visualization of the mature tDR profile.
+
+The y-axis of the tRNA coverage map shows the top 50 most highly abundant tDRs derived from mature tRNAs in descending order, and also includes the relative abundance. The x-axis shows the position within the tRNA. Each row displays the percent read coverage at each position, the nucleotide sequence of each tRNA, and the positions and proportions of any “error types” that are present at >5% of the reads that map to a given position.
+
+**(h)** *top50Pre_tdr.pdf: Automatic visualization of the pre-tDR profile.
+
+The y-axis of the tRNA coverage map shows the top 50 most highly abundant tDRs derived from pre-tRNAs in descending order, and also includes the relative abundance. The x-axis shows the position within the tRNA. Each row displays the percent read coverage at each position.
 
 **Naming tDRs**
 
