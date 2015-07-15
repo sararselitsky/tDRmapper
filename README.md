@@ -15,7 +15,7 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 
 **Program overview**
 
-<img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/tdrOvervew.png" width="400">
+<img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/tdrOvervew.png" width="600">
 
 **Program steps**
 
@@ -129,9 +129,13 @@ From left to right, the columns are:
 
 **(g)** *top50_tdr.pdf: Automatic visualization of the mature tDR profile.
 
+<img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/mature-tRNA_covg_for_git.png" width="800">
+
 The y-axis of the tRNA coverage map shows the top 50 most highly abundant tDRs derived from mature tRNAs in descending order, and also includes the relative abundance. The x-axis shows the position within the tRNA. Each row displays the percent read coverage at each position, the nucleotide sequence of each tRNA, and the positions and proportions of any “error types” that are present at >5% of the reads that map to a given position.
 
 **(h)** *top50Pre_tdr.pdf: Automatic visualization of the pre-tDR profile.
+
+<img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/pre-tRNA_covg_for_git.png" width="800">
 
 The y-axis of the tRNA coverage map shows the top 50 most highly abundant tDRs derived from pre-tRNAs in descending order, and also includes the relative abundance. The x-axis shows the position within the tRNA. Each row displays the percent read coverage at each position.
 
