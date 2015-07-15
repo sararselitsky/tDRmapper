@@ -15,7 +15,7 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 
 **Program overview**
 
-![Image of tDRmapper overview](https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/Figure2.png)
+<img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/tdrOvervew.png" width="400">
 
 **Program steps**
 
