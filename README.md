@@ -1,5 +1,4 @@
-# tDRmapper
-**tDRmapper introduction**
+#**tDRmapper introduction**
 
 Small RNA-sequencing has revealed the diversity and high abundance of small RNAs derived from tRNAs, referred to as tRNA-derived RNAs (tDRs). 
 
@@ -7,17 +6,17 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 
 *tDRmapper* was designed specifically for trimmed human small RNA-seq data (single-end, 50x) generated on the Illumina sequencing platform using cDNA libraries that were prepared using the Illumina TruSeq protocol. 
 
-**Quick run**
+#**Quick run**
 
 `module add r`
 
 `perl TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
 
-**Program overview**
+#**Program overview**
 
 <img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/tdrOvervew.png" width="600">
 
-**Program steps**
+#**Program steps**
 
 1. Filters reads with high quality at each position, programmed for Phred 33.
 `perl quality_at_positions.pl $file`
@@ -53,7 +52,7 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 `Rscript rCovgPlotPre.r $file.hq_cs.mapped.top50covgPre.txt`
 
 
-**Outputs:**
+#**Outputs:**
 
 **(a)** *.mapped
 
@@ -139,7 +138,7 @@ The y-axis of the tRNA coverage map shows the top 50 most highly abundant tDRs d
 
 The y-axis of the tRNA coverage map shows the top 50 most highly abundant tDRs derived from pre-tRNAs in descending order, and also includes the relative abundance. The x-axis shows the position within the tRNA. Each row displays the percent read coverage at each position.
 
-**Naming tDRs**
+#**Naming tDRs**
 
 <img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/namingScheme.png" width="600">
 
