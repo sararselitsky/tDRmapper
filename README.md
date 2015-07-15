@@ -137,6 +137,8 @@ The y-axis of the tRNA coverage map shows the top 50 most highly abundant tDRs d
 
 **Naming tDRs**
 
+<img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/namingScheme.png" width="600">
+
 tDRmapper will assign to each tDR a name that has three components:
  
 1. The first component of the tDR name indicates the parent tRNA “family” from which the TDR is derived.
@@ -145,9 +147,9 @@ tDRmapper will assign to each tDR a name that has three components:
 
   b. For the pre-tRNA sequences, the “family” names consist of 6 parts, “pre-W-X-Y-Z.n”. This reflects the same naming scheme described above in (a), but with the prefix “pre” and the suffix “.n”. The “.n” refers to the number of pre-tRNAs from the W-X-Y mature tRNA family that have the identical pre-tRNA sequence. From among those with the identical pre-tRNA sequence, the largest “Z” is chosen for the “family” name. For example, the pre-Gly-TCC-2-5.4 sequence accounts for four pre-tRNAs with identical sequence. The family members included under this name are pre-Gly-TCC-2-2, pre-Gly-TCC-2-3, pre-Gly-TCC-2-4, and pre-Gly-TCC-2-5.
 
-2. The second component of the tDR name indicates the size of the tDR. tDRmapper determines the primary tDR associated with a parent tRNA by counting the number of positions in the tRNA that have >50% coverage (where coverage at a position is defined as the percent of all reads mapping to the tRNA at that position). If the primary TDR sequence is <41 nts and =>28 nts, it is defined as a tRNA-half (tRH), and if it is >14 nts and <28 nts, it is defined as a tRNA-fragment (tRF). 
+2. The second component of the tDR name indicates the size of the tDR (refer to above figure). tDRmapper determines the primary tDR associated with a parent tRNA by counting the number of positions in the tRNA that have >50% coverage (where coverage at a position is defined as the percent of all reads mapping to the tRNA at that position). If the primary TDR sequence is <41 nts and =>28 nts, it is defined as a tRNA-half (tRH), and if it is >14 nts and <28 nts, it is defined as a tRNA-fragment (tRF). 
 
-3. The last component of the tDR name indicates the region in the mature or pre-tRNA from which the read is derived.
+3. The last component of the tDR name indicates the region in the mature (a, above) or pre-tRNA (b, above) from which the read is derived.
 
   a. For the tDRs derived from mature tRNAs, we use a generalized tRNA secondary structure (Methods). First we determine if a read is derived from the 5’ or 3’ end of the tRNA. If not, then we assess whether it overlaps the D-loop, anti-codon loop (A-loop), or T-loop by at least one nucleotide. Details are provided below: 
 
