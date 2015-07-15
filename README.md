@@ -52,7 +52,7 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 `Rscript rCovgPlotPre.r $file.hq_cs.mapped.top50covgPre.txt`
 
 
-#**Outputs:**
+#**Outputs**
 
 **(a)** *.mapped
 
