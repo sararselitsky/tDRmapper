@@ -92,7 +92,7 @@ open(PCOV,">$mapped.covgPre.txt");
 open(PCOV50,">$mapped.top50covgPre.txt");
 print COV "file\ttRNA\ttRNAPer\tCatted\tPosition\tperCovg\tGM\tperGM\tbase\n";
 print COV50 "file\ttRNA\ttRNAPer\tCatted\tPosition\tperCovg\tGM\tperGM\tbase\n";
-print PCOV "file\ttRNA\ttRNAPer\tCatted\tPosition\tperCovg\ttbase\n";
+print PCOV "file\ttRNA\ttRNAPer\tCatted\tPosition\tperCovg\tbase\n";
 print PCOV50 "file\ttRNA\ttRNAPer\tCatted\tPosition\tperCovg\tbase\n";
 
 # determine the major genomic match types
