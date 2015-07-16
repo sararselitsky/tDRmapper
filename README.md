@@ -10,7 +10,9 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 
 load Perl and R
 
-`perl TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
+In the Scripts folder, run the following command:
+
+`perl TdrMappingScripts.pl ../hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
 
 #**Program overview**
 
@@ -19,8 +21,8 @@ load Perl and R
 #**Program steps**
 load Perl and R
 
-Run the program using the following command:
-`perl TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
+Run the program using the following command in the Scripts folder:
+`perl TdrMappingScripts.pl ../hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
 
 This program executes the commands below:
 
