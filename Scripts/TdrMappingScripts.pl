@@ -42,7 +42,7 @@ $file = shift or die;
 #`rm $file.hq_cs.*not*`;
 
 ## determine TDR information, coverage, species, outputs: $file.hq_cs.mapped.covg.txt, $file.hq_cs.mapped.top50covg.txt, and $file.hq_cs.mapped.speciesInfo.txt
-`perl makeCovgPlotTop50_and_overallStats_species_withPre.pl $tRNAFasta $file.hq_cs.mapped`;
+`perl makeCovgPlotTop50_and_overallStats.pl $tRNAFasta $file.hq_cs.mapped`;
 
 ## inputs top 50 coverage file generated above and makes a visualization using R.
 `Rscript rCovgPlot.r $file.hq_cs.mapped.top50covg.txt`;
