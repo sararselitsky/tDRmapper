@@ -17,6 +17,12 @@ load Perl and R
 <img src="https://github.com/sararselitsky/tDRmapper/blob/master/tDRmapper_Fig/tdrOvervew.png" width="600">
 
 #**Program steps**
+load Perl and R
+
+Run the program using the following command:
+`perl TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
+
+This program executes the commands below:
 
 1. Filters reads with high quality at each position, programmed for Phred 33.
 `perl quality_at_positions.pl $file`
