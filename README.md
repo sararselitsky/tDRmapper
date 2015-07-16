@@ -8,7 +8,7 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 
 #**Quick run**
 
-`module add r`
+load Perl and R
 
 `perl TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
 
