@@ -195,14 +195,15 @@ if($tdrSpeciesHash{$tRNA} !~ /[UATD3510B]/){
 
 # organize the information and output the data
 open(SPE,">$mapped.speciesInfo.txt");
-print SPE "file\ttRNA\tspecies\ttRNAPer\tlocMajorityCovg\n";
+print SPE "file\ttRNA\tspecies\tcounts\ttRNAPer\tlocMajorityCovg\n";
 foreach $tRNA (sort { $expressedHash{$b} <=> $expressedHash{$a} } keys %expressedHash){
    $tRNACount = $tRNACountHash{$tRNA};
    $perTotal = (($tRNACount / $totalCount)* $coverageMax{$tRNA}) * 100;
+   $countsTotal = $tRNACount;
    $roundedPerTotal = sprintf("%.3f",$perTotal);
    $species = $tdrSpeciesHash{$tRNA};
 #print out species files
-   print SPE "$mapped\t$tRNA\t$species\t$roundedPerTotal\t";
+   print SPE "$mapped\t$tRNA\t$species\t$countsTotal\t$roundedPerTotal\t";
    if(!exists $newHash{$tRNA} && $tRNA !~ /pre/){
       $newHash{$tRNA} = 1;
       $top50Count = $top50Count + 1;

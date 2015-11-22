@@ -5,47 +5,68 @@
 # Date: May 26, 2015
 ###########################################################################
 
-$tRNAFasta = shift or die;
+use Cwd 'abs_path';
+use File::Basename;
+
+my $scripts=abs_path($0);
+$scripts =~ s/TdrMappingScripts.pl//;
+$scripts =~ s/\s+//g;
+
+$tRNAFasta = shift or die "No tRNA fasta file."; 
 open(TF,$tRNAFasta);
 while($header = <TF>){
    if($header !~ />/){die "no FASTA detected\n";}
    $seq = <TF>;
 }
 
-$file = shift or die;
-
+$file = shift or die "No fastq file.";
+($name,$path,$suffix) = fileparse($file);
 ## filters out lower quality reads
-`perl quality_at_positions.pl $file`;
+`perl $scripts/quality_at_positions.pl $file` if (! -e "$file.hq_cs");
+
+if (! -e "$name.hq_cs.mapped") {
+## maps reads exactly to the tRNA sequences, if map exactly > $file.hq_cs.mapped, if not then outputted to to smallRNASeqInputFile.notEM 
+    `perl $scripts/tdrMappingExactMatches.pl $tRNAFasta $file.hq_cs > $name.hq_cs.mapped` ;
 
 ## maps reads exactly to the tRNA sequences, if map exactly > $file.hq_cs.mapped, if not then outputted to to smallRNASeqInputFile.notEM 
-`perl tdrMappingExactMatches.pl $tRNAFasta $file.hq_cs > $file.hq_cs.mapped`;
-
-## maps reads exactly to the tRNA sequences, if map exactly > $file.hq_cs.mapped, if not then outputted to to smallRNASeqInputFile.notEM 
-`perl tdrMappingExactMatchesPretRNA.pl $tRNAFasta $file.hq_cs.notEM >> $file.hq_cs.mapped`;
+    `perl $scripts/tdrMappingExactMatchesPretRNA.pl $tRNAFasta $file.hq_cs.notEM >> $name.hq_cs.mapped`;
 
 ## maps reads allowing for one mismatch to the tRNA sequences, if map >> $file.hq_cs.mapped, if not then outputted to to smallRNASeqInputFile.notEM.not1MM 
-`perl tdrMappingOneMisMatch.pl $tRNAFasta $file.hq_cs.notEM.notPre >> $file.hq_cs.mapped`;
+    `perl $scripts/tdrMappingOneMisMatch.pl $tRNAFasta $file.hq_cs.notEM.notPre >> $name.hq_cs.mapped`;
 
 ## maps reads allowing for one deletion to the tRNA sequences, if map >> $file.hq_cs.mapped, if not then outputted to to smallRNASeqInputFile.notEM.not1MM.not1del 
-`perl tdrMappingOneDeletion.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM >> $file.hq_cs.mapped`;
+    `perl $scripts/tdrMappingOneDeletion.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM >> $name.hq_cs.mapped`;
 
 ## maps reads allowing for two mismatches to the tRNA sequences, if map >> $file.hq_cs.mapped, if not then outputted to to smallRNASeqInputFile.notEM.not1MM.not1del.not2MM 
-`perl tdrMappingTwoMisMatches.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM.not1del >> $file.hq_cs.mapped`;
+    `perl $scripts/tdrMappingTwoMisMatches.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM.not1del >> $name.hq_cs.mapped`;
 
 ## maps reads allowing for two deletions to the tRNA sequences, if map >> $file.hq_cs.mapped, if not then outputted to to smallRNASeqInputFile.notEM.not1MM.not1del.not2MM.not2del 
-`perl tdrMappingTwoDeletions.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM.not1del.not2MM >> $file.hq_cs.mapped`;
+    `perl $scripts/tdrMappingTwoDeletions.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM.not1del.not2MM >> $name.hq_cs.mapped`;
 
 ## maps reads allowing for three consecutive deletion to the tRNA sequences, if map >> $file.hq_cs.mapped 
-`perl tdrMappingThreeConsGap.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM.not1del.not2MM.not2del >> $file.hq_cs.mapped`;
-
+    `perl $scripts/tdrMappingThreeConsGap.pl $tRNAFasta $file.hq_cs.notEM.notPre.not1MM.not1del.not2MM.not2del >> $name.hq_cs.mapped`;
+}
 ## clean up directory
 #`rm $file.hq_cs.*not*`;
 
+open(RES, "$name.hq_cs.mapped") or die "Not mapped file";
+my $n = 0;
+while($line = <RES>){
+    $n++;
+    if ($n > 10){
+        break;
+    }
+}
+close(RES);
+
+
+if ($n > 10){
 ## determine TDR information, coverage, species, outputs: $file.hq_cs.mapped.covg.txt, $file.hq_cs.mapped.top50covg.txt, and $file.hq_cs.mapped.speciesInfo.txt
-`perl makeCovgPlotTop50_and_overallStats.pl $tRNAFasta $file.hq_cs.mapped`;
+    `perl $scripts/makeCovgPlotTop50_and_overallStats.pl $tRNAFasta $name.hq_cs.mapped`;
 
 ## inputs top 50 coverage file generated above and makes a visualization using R.
-`Rscript rCovgPlot.r $file.hq_cs.mapped.top50covg.txt`;
+    `Rscript $scripts/rCovgPlot.r $name.hq_cs.mapped.top50covg.txt`;
 
 ## inputs top 50 coverage file generated above and makes a visualization using R.
-`Rscript rCovgPlotPre.r $file.hq_cs.mapped.top50covgPre.txt`;
+    `Rscript $scripts/rCovgPlotPre.r $name.hq_cs.mapped.top50covgPre.txt`;
+}

@@ -9,7 +9,11 @@
 
 
 $fq = shift;
+if ($fq=~/gz$/){
+    open(FQ, "zcat $fq | ")
+}else{
 open(FQ,$fq);
+}
 
 ## open output file
 open(HI, ">$fq.hq_cs");
