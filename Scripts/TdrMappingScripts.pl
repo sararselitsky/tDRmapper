@@ -1,9 +1,11 @@
+#!/usr/bin/perl
 ###########################################################################
 # usage: perl TdrMappingScripts.pl tRNA.fa trimmedFastq 
 # runs all scripts involved in TDRmapper pipeline
 # Sara R. Selitsky, contact: SaraRSelitsky@gmail.com
 # Date: May 26, 2015
 ###########################################################################
+
 use Getopt::Long;
 use Pod::Usage;
 use Cwd 'abs_path';
