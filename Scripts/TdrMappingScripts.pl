@@ -4,11 +4,18 @@
 # Sara R. Selitsky, contact: SaraRSelitsky@gmail.com
 # Date: May 26, 2015
 ###########################################################################
-
+use Getopt::Long;
+use Pod::Usage;
 use Cwd 'abs_path';
 use File::Basename;
 
-my $scripts=abs_path($0);
+my $help = 0;
+$result = GetOptions ('help|?' => \$help,
+                      "fasta=s" => \$fasta_fn,
+                      "ref=s"   => \$ref_fn) or pod2usage(2);
+pod2usage(1) if $help;
+
+my $scripts = abs_path($0);
 $scripts =~ s/TdrMappingScripts.pl//;
 $scripts =~ s/\s+//g;
 
@@ -70,3 +77,15 @@ if ($n > 10){
 ## inputs top 50 coverage file generated above and makes a visualization using R.
     `Rscript $scripts/rCovgPlotPre.r $name.hq_cs.mapped.top50covgPre.txt`;
 }
+
+ __END__
+
+=head1 NAME
+
+ tRNA mapper
+
+=head1 SYNOPSIS
+
+ TdrMappingScripts.pl reference_trna.fa sample.fa
+
+=cut
