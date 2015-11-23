@@ -15,7 +15,7 @@ my $help = 0;
 $result = GetOptions ('help|?' => \$help,
                       "fasta=s" => \$fasta_fn,
                       "ref=s"   => \$ref_fn) or pod2usage(2);
-pod2usage(1) if $help;
+pod2usage(0) if $help;
 
 my $scripts = abs_path($0);
 $scripts =~ s/TdrMappingScripts.pl//;
