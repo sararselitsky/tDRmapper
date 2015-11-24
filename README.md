@@ -4,7 +4,9 @@ Small RNA-sequencing has revealed the diversity and high abundance of small RNAs
 
 tRNA-derived RNAs have unique features that limit the utility of conventional alignment tools and quantification methods. *tDRmapper* is a tool for mapping, naming, and quantifying tDRs while annotating and quantifying mismatches and deletions.
 
-*tDRmapper* was designed specifically for trimmed human small RNA-seq data (single-end, 50x) generated on the Illumina sequencing platform using cDNA libraries that were prepared using the Illumina TruSeq protocol. 
+*tDRmapper* was designed specifically for trimmed human small RNA-seq data (single-end, 50x) generated on the Illumina sequencing platform using cDNA libraries that were prepared using the Illumina TruSeq protocol.
+
+More details can be found in article: http://www.biomedcentral.com/1471-2105/16/354
 
 #**Quick run**
 
@@ -12,7 +14,7 @@ load Perl and R
 
 In the Scripts folder, run the following command:
 
-`perl TdrMappingScripts.pl ../hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
+`perl Scripts/TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
 
 #**Program overview**
 
