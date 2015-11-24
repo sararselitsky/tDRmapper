@@ -24,7 +24,7 @@ In the Scripts folder, run the following command:
 load Perl and R
 
 Run the program using the following command in the Scripts folder:
-`perl TdrMappingScripts.pl ../hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
+`perl Scripts/TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
 
 This program executes the commands below:
 
