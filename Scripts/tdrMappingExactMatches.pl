@@ -7,12 +7,12 @@
 
 ## open tRNA.fa
 $tRNASeqs = shift;
-open(T,$tRNASeqs);
+open(T,$tRNASeqs) or die "no trna fasta file.";
 ## open in organized trimmed and filtered reads
 $countSeq = shift;
 
 @nt = ("A","C","G","T");
-open(NEM,">$countSeq.notEM");
+open(NEM,">$countSeq.notEM") or die "no input file.";
 
 #reads in tRNA.fa
 while($name = <T>){
