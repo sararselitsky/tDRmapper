@@ -8,6 +8,7 @@ tRNA-derived RNAs have unique features that limit the utility of conventional al
 
 More details can be found in article: http://www.biomedcentral.com/1471-2105/16/354
 
+
 #**Quick run**
 
 load Perl and R
@@ -15,6 +16,9 @@ load Perl and R
 In the Scripts folder, run the following command:
 
 `perl Scripts/TdrMappingScripts.pl hg19_mature_and_pre.fa trimmed_small_RNA-seq.fastq`
+
+#**Additional species**
+The mouse tRNA FASTA is now added. To make other species FASTA files, follow the example in makeMm10Fasta. Note that the tRNA structural information may not be accurate for other species and these scripts only are true for the current outputs (3/28/16) from gtRNAdb and may change in the future.
 
 #**Program overview**
 
