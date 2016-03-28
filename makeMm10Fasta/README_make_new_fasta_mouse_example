@@ -1,0 +1,11 @@
+Will need bedtools and mm10.fa
+
+1) from gtRNAdb, click on desired species fasta, click on "Download tRNAscan-SE Results", unzip the folder
+
+2) make mature FASTA, makeMatureGenome.pl  mm10-tRNAs.fa mm10-tRNAs.ss.sort > mature_m10.fa
+
+3) make pre-tRNA fasta: 
+	(a) makeBedMM10.pl mm10-tRNAs.fa > mm10_bed_for_pre.bed
+	(b) bsub bedtools getfasta -name -fi genome/mm10.fa -bed mm10_bed_for_pre.bed -fo mm10_bed_for_pre.fa
+
+4) combine mature and pre: cat mature_m10.fa mm10_bed_for_pre.fa > mm10_mature_pre_for_tdrMapper.fa 
